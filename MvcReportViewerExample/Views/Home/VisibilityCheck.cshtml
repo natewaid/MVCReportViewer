@@ -1,0 +1,33 @@
+﻿@using Microsoft.Reporting.WebForms;
+@using MvcReportViewer;
+@{
+    ViewBag.Title = "MvcReportViewer Multiple ReportParameter Parameters Example";
+}
+
+@section Code {
+    @@using Microsoft.Reporting.WebForms;
+
+    @@{
+        var parameters = new List<ReportParameter>()
+        {
+            new ReportParameter("Parameter1", new [] { "Value 1", "Value 2" }, true),
+            new ReportParameter("Parameter2", new [] { "1/1/2010", "2/2/2015" }, false),
+            new ReportParameter("Parameter3", new [] { "12345", "9876", "123" }, true),
+            new ReportParameter("Parameter4", "6/20/2014", false)
+        };
+    }
+
+    @@Html.MvcReportViewerFluent("/TestReports/TestReport").ReportParameters(parameters).Attributes(new { Height = 900, Width = 900, style = "border: none" })
+}
+
+@{
+    var parameters = new List<ReportParameter>()
+    {
+        new ReportParameter("Parameter1", new [] { "Value 1", "Value 2" }, true),
+        new ReportParameter("Parameter2", new [] { "1/1/2010", "2/2/2015" }, false),
+        new ReportParameter("Parameter3", new [] { "12345", "9876", "123" }, true),
+        new ReportParameter("Parameter4", "6/20/2014", false)
+    };
+}
+
+@Html.MvcReportViewerFluent("/TestReports/TestReport").ReportParameters(parameters).Attributes(new { Height = 900, Width = 900, style = "border: none" })
